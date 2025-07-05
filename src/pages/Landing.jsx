@@ -8,14 +8,8 @@ const Landing = () => {
     <div>
       <Hero />
 
-      <div className="text-end mt-3 me-3">
-        <button
-          className="btn btn-sm btn-outline-light"
-          onClick={() => navigate("/admin-login")}
-        >
-          Admin Login
-        </button>
-      </div>
+      
+      
     </div>
   );
 };
