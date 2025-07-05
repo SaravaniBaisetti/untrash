@@ -9,6 +9,7 @@ import { auth, db } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import DonationGraph from "../components/DonationGraph";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
@@ -22,6 +23,7 @@ const AdminDashboard = () => {
   const [view, setView] = useState("dashboard");
   const [userList, setUserList] = useState([]);
   const [cafeList, setCafeList] = useState([]);
+  const [graphData, setGraphData] = useState([]);
   const [filters, setFilters] = useState({
     role: "",
     minBottles: "",
@@ -87,6 +89,13 @@ const AdminDashboard = () => {
       });
       setDonations(allDonations);
       setFilteredDonations(allDonations);
+
+      const donationHistory = allDonations.map((d) => ({
+      timestamp: d.date,
+      bottleCount: d.count,
+    }));
+setGraphData(donationHistory);
+
     } catch (error) {
       console.error("❌ Error loading admin data:", error);
     } finally {
@@ -210,6 +219,9 @@ const AdminDashboard = () => {
 
       {view === "dashboard" && (
         <motion.div className="bg-dark text-white p-4 rounded shadow" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
+          
+          <DonationGraph donationHistory={graphData} />
+
           <h5 className="mb-3">🔍 Filter Donations</h5>
 <div className="row mb-3 align-items-end">
   <div className="col-md-2">
