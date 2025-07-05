@@ -3,6 +3,7 @@ import { auth, db } from "../firebase";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import DonationGraph from "../components/DonationGraph";
 
 const DashboardCafe = () => {
   const [cafeData, setCafeData] = useState(null);
@@ -98,6 +99,12 @@ const DashboardCafe = () => {
               <p><strong>Reward Points:</strong> {totalBottles}</p>
             </div>
           </div>
+
+
+          <div className="col-md-12">
+            <DonationGraph donationHistory={donationHistory} />
+          </div>
+
         </div>
 
         <div className="p-3 dashboard-card border rounded bg-black bg-opacity-25 mb-4">
