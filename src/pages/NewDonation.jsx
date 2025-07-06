@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { doc, collection, addDoc, serverTimestamp, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import LocationPicker from "../components/LocationPicker";
+
 
 const NewDonation = () => {
   const [bottles, setBottles] = useState("");
@@ -10,6 +12,7 @@ const NewDonation = () => {
   const [role, setRole] = useState("");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [pickupLocation, setPickupLocation] = useState(null);
 
   // Cloudinary config
   const CLOUD_NAME = "dpo9l8uvo"; // <-- Replace this
@@ -48,12 +51,15 @@ const NewDonation = () => {
           throw new Error("Image upload failed.");
         }
       }
-
+       
       await addDoc(donationRef, {
-        bottleCount: parseInt(bottles),
-        timestamp: serverTimestamp(),
-        proofImage: imageUrl || null,
+       bottleCount: parseInt(bottles),
+       timestamp: serverTimestamp(),
+       proofImage: imageUrl || null,
+       pickupLocation: pickupLocation || null, // <- add this line
       });
+
+      
 
       alert("✅ Donation added successfully!");
 
@@ -113,6 +119,12 @@ const NewDonation = () => {
             onChange={(e) => setImage(e.target.files[0])}
           />
         </div>
+
+        <div className="mb-3">
+          <label className="form-label">📍 Pickup Location</label>
+          <LocationPicker onLocationSelect={(location) => setPickupLocation(location)} />
+         </div>
+
 
         <button type="submit" className="btn btn-success w-100">
           Submit Donation

@@ -57,6 +57,7 @@ const AdminDashboard = () => {
             count: data.bottleCount,
             date: data.timestamp?.toDate(),
             imageUrl: data.imageUrl || data.proofImage || null,
+            pickupLocation: data.pickupLocation || null,
             path: `users/${user.id}/donations/${donationDoc.id}`,
           });
         });
@@ -75,6 +76,7 @@ const AdminDashboard = () => {
             count: data.bottleCount,
             date: data.timestamp?.toDate(),
             imageUrl: data.imageUrl || data.proofImage || null,
+            pickupLocation: data.pickupLocation || null,
             path: `cafes/${cafe.id}/donations/${donationDoc.id}`,
           });
         });
@@ -91,9 +93,9 @@ const AdminDashboard = () => {
       setFilteredDonations(allDonations);
 
       const donationHistory = allDonations.map((d) => ({
-      timestamp: d.date,
-      bottleCount: d.count,
-    }));
+  timestamp: d.date,
+  bottleCount: d.count,
+}));
 setGraphData(donationHistory);
 
     } catch (error) {
@@ -274,6 +276,7 @@ setGraphData(donationHistory);
                     <th>Role</th>
                     <th>Bottle Count</th>
                     <th>Image</th>
+                    <th>Pickup Location</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -291,6 +294,24 @@ setGraphData(donationHistory);
                           "-"
                         )}
                       </td>
+                      
+                      <td>
+                        {entry.pickupLocation ? (
+                        <a
+                        href={`https://www.google.com/maps?q=${entry.pickupLocation.lat},${entry.pickupLocation.lng}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-warning"
+                        >
+                        View Location
+                       </a>
+                        ) : (
+                         "-"
+                        )}
+                      </td>
+
+
+
                       <td>
                         <button className="btn btn-sm btn-danger" onClick={() => deleteDonation(entry.path)}>Delete</button>
                       </td>
