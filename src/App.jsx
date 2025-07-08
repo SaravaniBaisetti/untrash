@@ -1,6 +1,7 @@
 // App.jsx
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Landing from './pages/Landing'
 import CafeRegistration from './pages/CafeRegistration'
@@ -12,10 +13,12 @@ import About from './pages/About';
 import Login from "./pages/login";
 import NewDonation from './pages/NewDonation';
 import AdminDashboard from './pages/AdminDashboard';
+import { ThemeProvider } from './context/ThemeContext'; 
 
 function App() {
   return (
     <Router>
+      <ThemeProvider>
       <div className="app-wrapper">
         <Navbar />
         <Routes>
@@ -32,6 +35,7 @@ function App() {
 
         </Routes>
       </div>
+      </ThemeProvider>
     </Router>
   )
 }

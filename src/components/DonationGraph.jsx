@@ -36,13 +36,13 @@ const DonationGraph = ({ donationHistory }) => {
       {graphData.length > 0 ? (
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={graphData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-            <XAxis dataKey="date" stroke="#fff" />
-            <YAxis stroke="#fff" />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--subtext-color)" />
+            <XAxis dataKey="date" stroke="var(--text-color)" />
+            <YAxis stroke="var(--text-color)" />
             <Tooltip
-              labelStyle={{ color: "#000" }}
-              itemStyle={{ color: "#000" }}
-              contentStyle={{ backgroundColor: "#fff", borderRadius: "8px" }}
+              labelStyle={{ color: "var(--text-color)" }}
+              itemStyle={{ color: "var(--text-color)" }}
+              contentStyle={{ backgroundColor: "var(--card-bg)", borderRadius: "8px" }}
             />
             <Line
               type="monotone"

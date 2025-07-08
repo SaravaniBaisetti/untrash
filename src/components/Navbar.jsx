@@ -1,14 +1,18 @@
 import logo from '../assets/logo.jpg';
 import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
+import '../App.css'; // Ensure you're importing global styles
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm">
-      <div className="d-flex align-items-center">
-        <img src={logo} alt="Untrash Logo" height="40" className="me-2 rounded-circle" />
-        <span className="fw-bold text-success fs-4">Untrash</span>
+    <nav className="navbar navbar-expand-lg px-4 shadow-sm" style={{ backgroundColor: 'var(--navbar-bg)' }}>
+      <div className="d-flex align-items-center gap-3">
+        <img src={logo} alt="Untrash Logo" height="40" className="rounded-circle" />
+        <span className="fw-bold fs-4" style={{ color: 'var(--highlight-color)' }}>Untrash</span>
       </div>
-      <div className="ms-auto">
+
+      <div className="ms-auto d-flex align-items-center gap-3">
+        <ThemeToggle />
         <Link to="/login" className="btn btn-success">Login</Link>
       </div>
     </nav>
