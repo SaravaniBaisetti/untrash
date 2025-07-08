@@ -18,9 +18,9 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="hero-card animate-in mt-5">
-        <h3 className="hero-card-title mb-3">♻️ Welcome to Untrash</h3>
-        <p className="hero-card-text">
+      <div className="hero-card animate-in mt-5" >
+        <h3 className="hero-card-title mb-3" style={{ color: 'var(--text-color)' }}>♻️ Welcome to Untrash</h3>
+        <p className="hero-card-text" >
           We help cafés and communities donate plastic for rewards & causes.
         </p>
         <Link to="/about" className="hero-button-outline mt-3">Learn More</Link>

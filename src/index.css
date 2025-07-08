@@ -1,14 +1,15 @@
 :root {
- /* --bg-color: #e0cda6;    */      /* soft sand */
+ /* --bg-color: #e0cda6;        /* soft sand */
   --text-color: #3e3120;        /* earthy brown */
-  --subtext-color: #dcd5a7;     /* sage green-gray */
-  --highlight-color: #d5debd;   /* soft sage */
+  --subtext-color: #a39e82;     /* sage green-gray */
+  --highlight-color: #beba99;   /* soft sage */
   --navbar-bg: #5f5240;         /* pale warm beige */
   --card-bg: #cfdbaa;
   --btn-bg: #a98467;            /* clay brown */
   --btn-text: #4a3a1d;
   --btn-hover-bg: #9c6644;
   --btn-hover-border: #7f5539;
+  
 }
 
 [data-theme='dark'] {
@@ -17,7 +18,7 @@
   --subtext-color: #d1d5db;
   --highlight-color: #4ade80;
   --card-bg: #2e3026;
-  --navbar-bg: #12130f;
+  --navbar-bg: #303908;
   --btn-bg: #2e7d32;
   --btn-text: #ffffff;
   --btn-hover-bg: #388e3c;
